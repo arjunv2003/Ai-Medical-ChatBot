@@ -25,7 +25,7 @@ def process_inputs(audio_filepath, image_filepath):
     else:
         doctor_response = "No image provided for me to analyze"
 
-    voice_of_doctor = text_to_speech_elevenlabs(input_text=doctor_response, output_file_path="final.mp3") 
+    voice_of_doctor = text_to_speech_gtts(input_text=doctor_response, output_file_path="final.mp3") 
 
     return speech_to_text_output, doctor_response, voice_of_doctor
 
@@ -42,7 +42,10 @@ iface = gr.Interface(
         gr.Textbox(label="Doctor's Response"),
         gr.Audio("Temp.mp3")
     ],
-    title="AI Doctor with Vision and Voice"
+    title="AI Doctor with Vision and Voice Your Health Assistant",
+    description="This is a Chat Bot made by Arjun that allows you to record your voice, upload an image, and get a response from an AI doctor. It will analyze the image and provide a response based on the audio input.",
+    theme="default",
+    allow_flagging="never",
 )
 
 iface.launch(debug=True)
