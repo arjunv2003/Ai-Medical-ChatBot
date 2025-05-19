@@ -15,6 +15,13 @@ system_prompt="""You have to act as a professional doctor, i know you are not bu
             Keep your answer concise (max 2 sentences). No preamble, start your answer right away please"""
 
 def process_inputs(audio_filepath, image_filepath):
+    #error handling
+    if not audio_filepath and not image_filepath:
+        return "", "", text_to_speech_gtts(input_text="I can definitely help you ,Please upload an image and tell me what happened", output_file_path="final.mp3")
+
+    if not audio_filepath:
+        return "", "", text_to_speech_gtts(input_text="Could you tell me what happened by tapping on record button", output_file_path="final.mp3")
+    
     speech_to_text_output = transcribe_with_groq(GROQ_API_KEY=os.environ.get("GROQ_API_KEY"), 
                                                  audio_filePath=audio_filepath, 
                                                  stt_model="whisper-large-v3")
