@@ -55,8 +55,8 @@ iface = gr.Interface(
     allow_flagging="never",
 )
 
-# iface.launch(debug=True)
+iface.launch(debug=True)
 
 
-port = int(os.environ.get("PORT", 7860))  # Render sets this automatically
-interface.launch(server_name="0.0.0.0", server_port=port)
+# port = int(os.environ.get("PORT", 7860))  # Render sets this automatically
+# interface.launch(server_name="0.0.0.0", server_port=port)
